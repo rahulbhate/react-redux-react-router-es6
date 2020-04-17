@@ -8,8 +8,13 @@ export function createCourse(course) {
 export function createCourseSuccess(course) {
   return { type: types.CREATE_COURSE_SUCCESS, course };
 }
+
 export function updateCourseSuccess(course) {
   return { type: types.UPDATE_COURSE_SUCCESS, course };
+}
+
+export function searchCourse(course) {
+  return { type: types.SEARCH_FILTER, course };
 }
 function loadCoursesSuccess(courses) {
   return { type: types.LOAD_COURSES_SUCCESS, courses };
