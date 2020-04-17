@@ -10,6 +10,7 @@ import { loadAuthors } from "../../redux/actions/authorActions";
 import PropTypes from "prop-types";
 import CourseList from "./CourseList";
 import Spinner from "../common/Spinner";
+import Button from "../common/Button";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
 import { getCourses } from "../../api/courseApi";
@@ -48,20 +49,17 @@ const CoursesPage = ({
   return (
     <>
       {redirectToAddCoursePage && <Redirect to='/course' />}
-      <h3>Courses</h3>
       {props.loading ? (
         <Spinner />
       ) : (
         <>
-          <button
-            style={{ marginBottom: 20 }}
-            className='btn btn-primary'
+          <Button
+            title='Add Course'
+            type='primary'
             onClick={() => {
               setRedirectToAddCoursePage({ redirectToAddCoursePage: true });
             }}
-          >
-            Add Course
-          </button>
+          />
           {/* <input
             type='text'
             placeholder={"Search...."}

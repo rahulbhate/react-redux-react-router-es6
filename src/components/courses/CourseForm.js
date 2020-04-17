@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
+import Button from "../common/Button";
 import SelectInput from "../common/SelectInput";
 
 const CourseForm = ({
@@ -48,9 +49,14 @@ const CourseForm = ({
         error={errors.category}
       />
 
-      <button type='submit' disabled={saving} className='btn btn-primary'>
+      <Button type='submit' disabled={saving} className='btn btn-primary'>
         {saving ? "Saving..." : "Save"}
-      </button>
+      </Button>
+      <Button
+        title={saving ? "Saving..." : "Save"}
+        disabled={saving}
+        type='primary'
+      />
     </form>
   );
 };

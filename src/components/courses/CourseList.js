@@ -1,33 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import CourseFilters from "./CourseFilters";
 const CourseList = ({ courses, onDeleteClick }) => {
-  const [search, setSearch] = useState("");
-  const [filteredCourses, setFilteredCourses] = useState([]);
-  useEffect(() => {
-    setFilteredCourses(
-      courses.filter(course => {
-        let filterString = course.title.toLowerCase();
-        return filterString.indexOf(search.toLowerCase()) !== -1;
-      })
-    );
-  }, [search, filteredCourses]);
-  // let filteredCurrencies = courses.filter(course => {
-  //   let filterString = course.title.toLowerCase();
-  //   return filterString.indexOf(search.toLowerCase()) !== -1;
-  // });
   return (
     <>
-      <h3>Course Filter Component</h3>
-
       <CourseFilters />
-      {/* <input
-        type='text'
-        placeholder={"Search...."}
-        onChange={e => setSearch(e.target.value)}
-      /> */}
-      {/* {search} */}
 
       <table className='table table-hover'>
         <thead>
@@ -39,7 +17,7 @@ const CourseList = ({ courses, onDeleteClick }) => {
           </tr>
         </thead>
         <tbody>
-          {filteredCourses.map(course => {
+          {courses.map(course => {
             return (
               <tr key={course.id}>
                 <td>
