@@ -4,7 +4,7 @@ import DropDown from "../common/Dropdown";
 import Label from "../common/Label";
 import TextInput from "../common/TextInput";
 import { filterText, sortBy } from "../../redux/actions/filters";
-const arrays = ["title", "category"];
+const arrays = ["title", "category", "authorname"];
 const CourseFilters = props => (
   <div style={{ marginBottom: 15 }}>
     <TextInput

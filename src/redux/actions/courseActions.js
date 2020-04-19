@@ -26,6 +26,7 @@ export function deleteCourseOptimistic(course) {
 which is function.
 This is optional - we can use fetch or axios library to handle 
 //async calls to API */
+
 export function loadCourses() {
   console.log("Load Courses Called");
   return function (dispatch, getState) {

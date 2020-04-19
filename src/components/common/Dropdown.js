@@ -40,7 +40,7 @@ Dropdown.propTypes = {
   name: PropTypes.string.isRequired,
 
   /** Select Value */
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 
   /** HandleChange Function */
   handleChange: PropTypes.func.isRequired

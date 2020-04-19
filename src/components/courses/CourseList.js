@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import CourseFilters from "./CourseFilters";
+
 const CourseList = ({ courses, onDeleteClick }) => {
   return (
     <>
       <CourseFilters />
-
       <table className='table table-hover'>
         <thead>
           <tr>
@@ -44,8 +44,7 @@ const CourseList = ({ courses, onDeleteClick }) => {
 
 CourseList.propTypes = {
   courses: PropTypes.array.isRequired,
-  onDeleteClick: PropTypes.func.isRequired,
-  onSearchCourse: PropTypes.func.isRequired
+  onDeleteClick: PropTypes.func.isRequired
 };
 
 export default CourseList;
