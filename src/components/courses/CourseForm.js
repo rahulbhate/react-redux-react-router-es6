@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
-import Button from "../common/Button";
 import SelectInput from "../common/SelectInput";
 
 const CourseForm = ({
   course,
   authors,
+  categories,
   onSave,
   onChange,
   saving = false,
@@ -40,25 +40,36 @@ const CourseForm = ({
         onChange={onChange}
         error={errors.author}
       />
-
-      <TextInput
+      <SelectInput
+        name='categoryId'
+        label='Category'
+        value={course.categoryId || ""}
+        defaultOption='Select Category'
+        options={categories.map(category => ({
+          value: category.id,
+          text: category.name
+        }))}
+        onChange={onChange}
+        error={errors.category}
+      />
+      {/* <TextInput
         name='category'
         label='Category'
         value={course.category}
         onChange={onChange}
         error={errors.category}
-      />
-      <Button
-        title={saving ? "Saving..." : "Save"}
-        disabled={saving}
-        type='primary'
-      />
+      /> */}
+
+      <button type='submit' disabled={saving} className='btn btn-primary'>
+        {saving ? "Saving..." : "Save"}
+      </button>
     </form>
   );
 };
 
 CourseForm.propTypes = {
   authors: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
   course: PropTypes.object.isRequired,
   errors: PropTypes.object,
   onSave: PropTypes.func.isRequired,

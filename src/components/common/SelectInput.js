@@ -11,17 +11,17 @@ const SelectInput = ({
   options
 }) => {
   return (
-    <div className="form-group">
+    <div className='form-group'>
       <label htmlFor={name}>{label}</label>
-      <div className="field">
+      <div className='field'>
         {/* Note, value is set here rather than on the option - docs: https://facebook.github.io/react/docs/forms.html */}
         <select
           name={name}
           value={value}
           onChange={onChange}
-          className="form-control"
+          className='form-control'
         >
-          <option value="">{defaultOption}</option>
+          <option value=''>{defaultOption}</option>
           {options.map(option => {
             return (
               <option key={option.value} value={option.value}>
@@ -30,7 +30,7 @@ const SelectInput = ({
             );
           })}
         </select>
-        {error && <div className="alert alert-danger">{error}</div>}
+        {error && <div className='alert alert-danger'>{error}</div>}
       </div>
     </div>
   );

@@ -94,7 +94,7 @@ const categories = [
   },
   {
     id: 6,
-    categoryName: "Lifestyle"
+    name: "Lifestyle"
   }
 ];
 const authors = [
@@ -107,7 +107,7 @@ const newCourse = {
   id: null,
   title: "",
   authorId: null,
-  category: ""
+  categoryId: null
 };
 
 // Using CommonJS style export so we can consume via Node (without using Babel-node)

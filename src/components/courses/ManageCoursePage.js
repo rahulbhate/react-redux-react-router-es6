@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { loadCourses, saveCourse } from "../../redux/actions/courseActions";
 import { loadAuthors } from "../../redux/actions/authorActions";
+import { loadCategories } from "../../redux/actions/categoriesAction";
 import PropTypes from "prop-types";
 import CourseForm from "./CourseForm";
 import Spinner from "../common/Spinner";
@@ -10,8 +11,10 @@ import { newCourse } from "../../../tools/mockData";
 const ManageCoursePage = ({
   courses,
   authors,
+  categories,
   loadCourses,
   loadAuthors,
+  loadCategories,
   saveCourse,
   history,
   ...props
@@ -28,6 +31,11 @@ const ManageCoursePage = ({
     } else {
       setCourse({ ...props.course });
     }
+    if (categories.length === 0) {
+      loadCategories().catch(error => {
+        alert("Loading categories failed" + error);
+      });
+    }
     if (authors.length === 0) {
       loadAuthors().catch(error => {
         alert("Loading authors failed" + error);
@@ -38,16 +46,19 @@ const ManageCoursePage = ({
     const { name, value } = event.target;
     setCourse(prevCourse => ({
       ...prevCourse,
-      [name]: name === "authorId" ? parseInt(value, 10) : value
+      [name]:
+        name === "authorId" || name === "categoryId"
+          ? parseInt(value, 10)
+          : value
     }));
   }
   function formIsValid() {
-    const { title, authorId, category } = course;
+    const { title, authorId, categoryId } = course;
     const errors = {};
 
     if (!title) errors.title = "Title is required.";
     if (!authorId) errors.author = "Author is required";
-    if (!category) errors.category = "Category is required";
+    if (!categoryId) errors.category = "Category is required";
 
     setErrors(errors);
     // Form is valid if the errors object still has no properties
@@ -68,12 +79,15 @@ const ManageCoursePage = ({
         setErrors({ onSave: error.message });
       });
   }
-  return authors.length === 0 || courses.length === 0 ? (
+  return authors.length === 0 ||
+    courses.length === 0 ||
+    categories.length === 0 ? (
     <Spinner />
   ) : (
     <CourseForm
       course={course}
       authors={authors}
+      categories={categories}
       errors={errors}
       onChange={handleChange}
       onSave={handleSave}
@@ -93,18 +107,22 @@ const mapStateToProps = (state, ownProps) => {
   return {
     course,
     courses: state.courses,
+    categories: state.categories,
     authors: state.authors
   };
 };
 const mapDispatchToProps = {
   loadCourses,
+  loadCategories,
   loadAuthors,
   saveCourse
 };
 ManageCoursePage.propTypes = {
   authors: PropTypes.array.isRequired,
+  categories: PropTypes.array.isRequired,
   courses: PropTypes.array.isRequired,
   loadCourses: PropTypes.func.isRequired,
+  loadCategories: PropTypes.func.isRequired,
   loadAuthors: PropTypes.func.isRequired,
   saveCourse: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
