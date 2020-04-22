@@ -72,11 +72,7 @@ const CoursesPage = ({
               setRedirectToAddCoursePage({ redirectToAddCoursePage: true });
             }}
           />
-          <CourseList
-            onDeleteClick={handleDeleteCourse}
-            courses={courses}
-            posts={posts}
-          />
+          <CourseList onDeleteClick={handleDeleteCourse} courses={courses} />
         </>
       )}
     </>

@@ -1,24 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CartPage = ({ cart }) => {
+const CartList = ({ cart }) => {
   return (
     <>
-      <main className='pa3 pa3-ns flex flex-wrap'>
-        <h2>CartList</h2>
-        {cart.map(c => (
-          <Cart key={c.id} {...c} />
-        ))}
-      </main>
+      <h2>CartList</h2>
+      {cart.map(c => (
+        <Cart key={c.id} {...c} />
+      ))}
     </>
   );
 };
 
-CartPage.propTypes = {
+CartList.propTypes = {
   cart: PropTypes.array.isRequired
 };
 
-export default CartPage;
+export default CartList;
 
 const Cart = props => {
   const { id, title, category, authorName, picture, price, units = 1 } = props;

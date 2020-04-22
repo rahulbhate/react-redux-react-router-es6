@@ -1,9 +1,6 @@
-const filtersReducerDefaultState = {
-  text: "",
-  sortBy: ""
-};
+import initialState from "./initialState";
 
-export default (state = filtersReducerDefaultState, action) => {
+export default (state = initialState.filters, action) => {
   switch (action.type) {
     case "FILTER_TEXT":
       return {

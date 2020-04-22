@@ -4,6 +4,7 @@ const courses = [
     title: "Securing React Apps with Auth0",
     slug: "react-auth0-authentication-security",
     picture: "https://placeimg.com/150/150/fruits",
+    price: 20,
     authorId: 2,
     categoryId: 1
   },
@@ -12,6 +13,7 @@ const courses = [
     title: "React: The Big Picture",
     slug: "react-big-picture",
     picture: "https://placeimg.com/150/150/animals",
+    price: 25,
     authorId: 1,
     categoryId: 1
   },
@@ -20,6 +22,7 @@ const courses = [
     title: "Creating Reusable React Components",
     slug: "react-creating-reusable-components",
     picture: "https://placeimg.com/150/150/nature",
+    price: 20,
     authorId: 1,
     categoryId: 1
   },
@@ -28,6 +31,7 @@ const courses = [
     title: "Building a JavaScript Development Environment",
     slug: "javascript-development-environment",
     picture: "https://placeimg.com/150/150/people",
+    price: 20,
     authorId: 1,
     categoryId: 2
   },
@@ -36,6 +40,7 @@ const courses = [
     title: "Building Applications with React and Redux",
     slug: "react-redux-react-router-es6",
     picture: "https://placeimg.com/150/150/arch",
+    price: 20,
     authorId: 1,
     categoryId: 2
   },
@@ -44,6 +49,7 @@ const courses = [
     title: "Building Applications in React and Flux",
     slug: "react-flux-building-applications",
     picture: "https://placeimg.com/150/150/fruits",
+    price: 30,
     authorId: 1,
     categoryId: 1
   },
@@ -52,6 +58,7 @@ const courses = [
     title: "Clean Code: Writing Code for Humans",
     slug: "writing-clean-code-humans",
     picture: "https://placeimg.com/150/150/arch",
+    price: 25,
     authorId: 1,
     categoryId: 2
   },
@@ -60,6 +67,7 @@ const courses = [
     title: "Architecting Applications for the Real World",
     slug: "architecting-applications-dotnet",
     picture: "https://placeimg.com/150/150/people",
+    price: 35,
     authorId: 1,
     categoryId: 1
   },
@@ -68,6 +76,7 @@ const courses = [
     title: "Becoming an Outlier: Reprogramming the Developer Mind",
     slug: "career-reboot-for-developer-mind",
     picture: "https://placeimg.com/150/150/nature",
+    price: 20,
     authorId: 1,
     categoryId: 1
   },
@@ -76,6 +85,7 @@ const courses = [
     title: "Web Component Fundamentals",
     slug: "web-components-shadow-dom",
     picture: "https://placeimg.com/150/150/animals",
+    price: 25,
     authorId: 1,
     categoryId: 1
   }

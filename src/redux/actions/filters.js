@@ -8,8 +8,3 @@ export const sortBy = sortType => ({
   type: types.SORT_BY,
   sortType
 });
-
-const filtersReducerDefaultState = {
-  text: "",
-  sortBy: ""
-};

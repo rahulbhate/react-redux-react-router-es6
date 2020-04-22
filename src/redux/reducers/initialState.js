@@ -3,5 +3,6 @@ export default {
   authors: [],
   categories: [],
   cart: [],
-  apiCallsInProgress: 0
+  apiCallsInProgress: 0,
+  filters: { text: "", sortBy: "" }
 };
