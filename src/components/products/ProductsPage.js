@@ -11,7 +11,6 @@ import { addToCart, deleteCartItem } from "../../redux/actions/cartActions";
 import { loadCategories } from "../../redux/actions/categoriesAction";
 import PropTypes from "prop-types";
 import ProductsList from "./ProductsList";
-import CartList from "./CartList";
 import Spinner from "../common/Spinner";
 import Button from "../common/Button";
 import { toast } from "react-toastify";
@@ -73,7 +72,6 @@ const ProductsPage = ({
           />
           {console.log(cart)}
           <ProductsList courses={courses} onSave={handleSave} />
-          <CartList cart={cart} />
         </>
       )}
     </>

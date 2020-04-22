@@ -15,10 +15,10 @@ const Header = () => {
       <NavLink to='/products' activeStyle={activeStyle}>
         Products
       </NavLink>
-      {/* {" | "}
+      {" | "}
       <NavLink to='/cart' activeStyle={activeStyle}>
         Cart
-      </NavLink> */}
+      </NavLink>
       {" | "}
       <NavLink to='/courses' activeStyle={activeStyle}>
         Courses

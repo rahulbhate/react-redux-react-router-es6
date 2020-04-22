@@ -6,6 +6,11 @@ export function addToCart(course) {
     course
   };
 }
+export function loadCart() {
+  return {
+    type: types.LOAD_CART_DATA_SUCCESS
+  };
+}
 
 export function deleteCartItem(course) {
   return { type: types.DELETE_ITEM_CART_SUCCESS, course };

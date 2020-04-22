@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-
-const CartPage = ({ cart }) => {
+import { connect } from "react-redux";
+import { loadCart } from "../../redux/actions/cartActions";
+const CartPage = ({ cart, loadCart }) => {
+  useEffect(() => {
+    if (cart.length === 0) {
+      loadCart();
+    }
+  }, []);
   return (
     <>
-      <main className='pa3 pa3-ns flex flex-wrap'>
-        <h2>CartList</h2>
-        {cart.map(c => (
-          <Cart key={c.id} {...c} />
-        ))}
-      </main>
+      <h2>CartList</h2>
+      {cart.map(c => (
+        <Cart key={c.id} {...c} />
+      ))}
     </>
   );
 };
-
+const mapStateToProps = state => {
+  return {
+    cart: state.cart
+  };
+};
+const mapDispatchToProps = {
+  loadCart
+};
 CartPage.propTypes = {
   cart: PropTypes.array.isRequired
 };
 
-export default CartPage;
+export default connect(mapStateToProps, mapDispatchToProps)(CartPage);
 
 const Cart = props => {
   const { id, title, category, authorName, picture, price, units = 1 } = props;
