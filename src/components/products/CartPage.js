@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loadCart } from "../../redux/actions/cartActions";
+
 const CartPage = ({ cart, loadCart }) => {
   useEffect(() => {
     if (cart.length === 0) {

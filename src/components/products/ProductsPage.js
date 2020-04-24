@@ -103,7 +103,7 @@ const mapDispatchToProps = {
 };
 ProductsPage.propTypes = {
   courses: PropTypes.array.isRequired,
-  cart: PropTypes.object.isRequired,
+  cart: PropTypes.array.isRequired,
   authors: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   loadCourses: PropTypes.func.isRequired

@@ -17,7 +17,7 @@ export default function cartReducer(state = initialState.cart, action) {
       }
     }
     case types.LOAD_CART_DATA_SUCCESS:
-      return state;
+      return [...state];
     //return [...state, action.course];
 
     case types.DELETE_ITEM_CART_SUCCESS:
