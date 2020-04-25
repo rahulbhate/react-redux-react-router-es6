@@ -1,4 +1,5 @@
 import * as types from "./actionTypes";
+import { func } from "prop-types";
 
 export function addToCart(course) {
   return {
@@ -14,4 +15,8 @@ export function loadCart() {
 
 export function deleteCartItem(course) {
   return { type: types.DELETE_ITEM_CART_SUCCESS, course };
+}
+
+export function deleteAllCartItems() {
+  return { type: types.DELETE_ALL_ITEMS_CART_SUCCESS };
 }

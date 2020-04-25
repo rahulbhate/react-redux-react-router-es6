@@ -22,6 +22,9 @@ export default function cartReducer(state = initialState.cart, action) {
 
     case types.DELETE_ITEM_CART_SUCCESS:
       return state.filter(cart => cart.id !== action.course.id);
+
+    case types.DELETE_ALL_ITEMS_CART_SUCCESS:
+      return state.filter(cart => cart.id !== cart.id);
     default:
       return state;
   }

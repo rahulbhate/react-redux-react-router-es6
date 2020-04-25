@@ -1,19 +1,32 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loadCart } from "../../redux/actions/cartActions";
+import {
+  loadCart,
+  deleteCartItem,
+  deleteAllCartItems
+} from "../../redux/actions/cartActions";
 
-const CartPage = ({ cart, loadCart }) => {
+const CartPage = ({ cart, loadCart, deleteCartItem, deleteAllCartItems }) => {
   useEffect(() => {
     if (cart.length === 0) {
       loadCart();
     }
   }, []);
+  const handleSave = id => {
+    deleteCartItem(id);
+  };
+  const handleDeleteAll = () => {
+    deleteAllCartItems();
+  };
   return (
     <>
       <h2>Cart List</h2>
+      <button className='btn btn-outline-danger' onClick={handleDeleteAll}>
+        Remove All
+      </button>
       {cart.map(c => (
-        <Cart key={c.id} {...c} />
+        <Cart key={c.id} {...c} onsave={handleSave} />
       ))}
     </>
   );
@@ -24,7 +37,9 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = {
-  loadCart
+  loadCart,
+  deleteCartItem,
+  deleteAllCartItems
 };
 CartPage.propTypes = {
   cart: PropTypes.array.isRequired
@@ -41,6 +56,7 @@ const Cart = props => {
     picture,
     price,
     units = 1,
+    onsave,
     deleteCartItem
   } = props;
   return (
@@ -56,7 +72,7 @@ const Cart = props => {
           <button
             className='btn btn-outline-danger'
             onClick={() => {
-              deleteCartItem;
+              onsave({ id });
             }}
           >
             Remove Item
