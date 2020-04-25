@@ -6,7 +6,9 @@ import CourseFilters from "./CourseFilters";
 const CourseList = ({ courses, onDeleteClick }) => {
   return (
     <>
-      <CourseFilters />
+      <div className='fl w-50 bg-near-white tc'>
+        <CourseFilters />
+      </div>
       <table className='table table-hover'>
         <thead>
           <tr>

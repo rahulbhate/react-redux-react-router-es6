@@ -71,7 +71,7 @@ const ManageCoursePage = ({
     setSaving(true);
     saveCourse(course)
       .then(() => {
-        toast.success("Course Saved Successfully");
+        toast.info("Course Saved Successfully");
         history.push("/courses");
       })
       .catch(error => {
@@ -84,15 +84,17 @@ const ManageCoursePage = ({
     categories.length === 0 ? (
     <Spinner />
   ) : (
-    <CourseForm
-      course={course}
-      authors={authors}
-      categories={categories}
-      errors={errors}
-      onChange={handleChange}
-      onSave={handleSave}
-      saving={saving}
-    />
+    <main className='pa4 black-80'>
+      <CourseForm
+        course={course}
+        authors={authors}
+        categories={categories}
+        errors={errors}
+        onChange={handleChange}
+        onSave={handleSave}
+        saving={saving}
+      />
+    </main>
   );
 };
 export function getCoursesBySlug(course, slug) {

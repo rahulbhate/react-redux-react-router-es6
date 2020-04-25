@@ -6,12 +6,14 @@ import {
   searchCourse
 } from "../../redux/actions/courseActions";
 import getVisibleCourses from "../../selectors/courses";
+import CourseFilters from "../courses/CourseFilters";
 import { loadAuthors } from "../../redux/actions/authorActions";
 import { addToCart, deleteCartItem } from "../../redux/actions/cartActions";
 import { loadCategories } from "../../redux/actions/categoriesAction";
 import PropTypes from "prop-types";
 import ProductsList from "./ProductsList";
 import Spinner from "../common/Spinner";
+import SkeletonCard from "../common/SkeletonCard";
 import Button from "../common/Button";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
@@ -60,18 +62,20 @@ const ProductsPage = ({
     <>
       {redirectToAddCoursePage && <Redirect to='/course' />}
       {props.loading ? (
-        <Spinner />
+        <SkeletonCard />
       ) : (
         <>
-          <Button
+          {/* <Button
             title='Add Course'
             type='primary'
             onClick={() => {
               setRedirectToAddCoursePage({ redirectToAddCoursePage: true });
             }}
-          />
-          {console.log(cart)}
-          <ProductsList courses={courses} onSave={handleSave} />
+          /> */}
+
+          <div className='fl w-100 bg-near-white tc'>
+            <ProductsList courses={courses} onSave={handleSave} />
+          </div>
         </>
       )}
     </>

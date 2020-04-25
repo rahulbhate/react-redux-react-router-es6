@@ -51,7 +51,7 @@ const CoursesPage = ({
   }, []);
 
   const handleDeleteCourse = async course => {
-    toast.success("Course deleted");
+    toast.info("Course deleted");
     try {
       await deleteCourse(course);
     } catch (error) {
@@ -67,12 +67,15 @@ const CoursesPage = ({
         <>
           <Button
             title='Add Course'
+            className='f6 no-underline grow dib v-mid bg-blue white ba b--blue ph3 pv2 mb3'
             type='primary'
             onClick={() => {
               setRedirectToAddCoursePage({ redirectToAddCoursePage: true });
             }}
           />
-          <CourseList onDeleteClick={handleDeleteCourse} courses={courses} />
+          <div className='fl w-100 bg-near-white tc'>
+            <CourseList onDeleteClick={handleDeleteCourse} courses={courses} />
+          </div>
         </>
       )}
     </>

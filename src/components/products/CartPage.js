@@ -11,7 +11,7 @@ const CartPage = ({ cart, loadCart }) => {
   }, []);
   return (
     <>
-      <h2>CartList</h2>
+      <h2>Cart List</h2>
       {cart.map(c => (
         <Cart key={c.id} {...c} />
       ))}
@@ -33,7 +33,16 @@ CartPage.propTypes = {
 export default connect(mapStateToProps, mapDispatchToProps)(CartPage);
 
 const Cart = props => {
-  const { id, title, category, authorName, picture, price, units = 1 } = props;
+  const {
+    id,
+    title,
+    category,
+    authorName,
+    picture,
+    price,
+    units = 1,
+    deleteCartItem
+  } = props;
   return (
     <ul className='list pl0 mt0 measure center'>
       <li className='flex items-center lh-copy pa3 ph0-l bb b--black-10'>
@@ -43,7 +52,15 @@ const Cart = props => {
           <span className='f6 db black-70'>Title: {title}</span>
           <span className='f6 db black-70'>AuthorName: {authorName}</span>
         </div>
-        <div>
+        <div className='pl6 flex-auto'>
+          <button
+            className='btn btn-outline-danger'
+            onClick={() => {
+              deleteCartItem;
+            }}
+          >
+            Remove Item
+          </button>
           <a href='tel:' className='f6 link blue hover-dark-gray'>
             Price: {price}
           </a>
