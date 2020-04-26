@@ -52,7 +52,7 @@ const Header = () => {
                 activeStyle={activeStyle}
                 className='f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3'
               >
-                Cart
+                Cart <span className='badge badge-danger'>{0}</span>
               </NavLink>
               {" | "}
               <NavLink

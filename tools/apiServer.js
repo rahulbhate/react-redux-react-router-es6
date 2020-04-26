@@ -11,6 +11,7 @@ Relevant source code: https://github.com/typicode/json-server/blob/master/src/cl
 */
 
 /* eslint-disable no-console */
+const conn = require("../dbConnection.js");
 const jsonServer = require("json-server");
 const server = jsonServer.create();
 const path = require("path");
@@ -27,7 +28,7 @@ server.use(jsonServer.bodyParser);
 
 // Simulate delay on all requests
 server.use(function (req, res, next) {
-  setTimeout(next, 5000);
+  setTimeout(next, 4000);
 });
 
 // Declaring custom routes below. Add custom routes before JSON Server router

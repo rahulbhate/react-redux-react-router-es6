@@ -65,15 +65,15 @@ const CoursesPage = ({
         <Spinner />
       ) : (
         <>
-          <Button
-            title='Add Course'
-            className='f6 no-underline grow dib v-mid bg-blue white ba b--blue ph3 pv2 mb3'
-            type='primary'
-            onClick={() => {
-              setRedirectToAddCoursePage({ redirectToAddCoursePage: true });
-            }}
-          />
           <div className='fl w-100 bg-near-white tc'>
+            <Button
+              title='Add Course'
+              className='f6 no-underline grow dib v-mid bg-purple white ba b--light-purple ph3 pv2 mb3'
+              type='primary'
+              onClick={() => {
+                setRedirectToAddCoursePage({ redirectToAddCoursePage: true });
+              }}
+            />
             <CourseList onDeleteClick={handleDeleteCourse} courses={courses} />
           </div>
         </>

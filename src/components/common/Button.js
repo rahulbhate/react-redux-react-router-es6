@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 /** Button with required field display, htmlFor, and block styling */
-const Button = ({ title, type, disabled, onClick, style }) => {
+const Button = ({ title, type, disabled, onClick, style, className }) => {
   return (
     <button
       style={style}
-      className={type === "primary" ? "btn btn-danger" : "btn btn-secondary"}
+      className={className}
       onClick={onClick}
       disabled={disabled}
     >

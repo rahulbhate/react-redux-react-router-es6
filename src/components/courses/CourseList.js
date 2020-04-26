@@ -9,7 +9,7 @@ const CourseList = ({ courses, onDeleteClick }) => {
       <div className='fl w-50 bg-near-white tc'>
         <CourseFilters />
       </div>
-      <table className='table table-hover'>
+      <table className='table'>
         <thead>
           <tr>
             <th>Title</th>
