@@ -8,13 +8,13 @@ import Footer from "./common/Footer";
 import AboutPage from "./about/AboutPage";
 import ProductsPage from "./products/ProductsPage";
 import CartPage from "./products/CartPage";
-import LoginForm from "../components/login/LoginForm";
+import UserLoginForm from "./users/UserLoginForm";
 import CoursesPage from "./courses/CoursesPage";
 import ManageCoursePage from "./courses/ManageCoursePage";
 import PageNotFound from "./PageNotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import RegisterForm from "./register/RegisterForm";
+import ManageUserPage from "./users/ManageUserPage";
 
 function App() {
   return (
@@ -22,13 +22,14 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route path='/login' component={LoginForm} />
-        <Route path='/register' component={RegisterForm} />
+        <Route path='/login' component={UserLoginForm} />
+        <Route path='/user' component={ManageUserPage} />
         <Route path='/products' component={ProductsPage} />
         <Route path='/cart' component={CartPage} />
         <Route path='/courses' component={CoursesPage} />
         <Route path='/course/:slug' component={ManageCoursePage} />
         <Route path='/course' component={ManageCoursePage} />
+        <Route path='/user' component={ManageUserPage} />
         <Route component={PageNotFound} />
       </Switch>
       <ToastContainer autoClose={3000} hideProgressBar />

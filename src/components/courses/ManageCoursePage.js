@@ -51,6 +51,7 @@ const ManageCoursePage = ({
           ? parseInt(value, 10)
           : value
     }));
+    console.log(course);
   }
   function formIsValid() {
     const { title, authorId, categoryId } = course;

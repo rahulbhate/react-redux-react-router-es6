@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "../common/modal/Modal";
-import LoginForm from "../login/LoginForm";
+import ManageUserPage from "../users/ManageUserPage";
 
 const HomePage = () => {
   const [isOpen, isSetOpen] = useState(false);
@@ -20,7 +20,7 @@ const HomePage = () => {
 
       <Modal isOpen={isOpen} onClose={e => isSetOpen(false)}>
         <div style={{ color: "black" }}>
-          <LoginForm />
+          <ManageUserPage />
         </div>
       </Modal>
     </div>

@@ -32,7 +32,7 @@ const Header = () => {
               </NavLink>
               {" | "}
               <NavLink
-                to='/register'
+                to='/user'
                 activeStyle={activeStyle}
                 className='f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3'
               >

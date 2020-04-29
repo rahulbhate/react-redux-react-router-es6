@@ -11,12 +11,17 @@ Relevant source code: https://github.com/typicode/json-server/blob/master/src/cl
 */
 
 /* eslint-disable no-console */
-const conn = require("../dbConnection.js");
+
 const jsonServer = require("json-server");
 const server = jsonServer.create();
 const path = require("path");
 const router = jsonServer.router(path.join(__dirname, "db.json"));
-
+const bcrypt = require("bcrypt");
+const data = require("./mockData");
+console.log("*********", data.users);
+const uu = data.users.filter(u => u.email === "rashhsasbeentome@gmail.com");
+console.log(uu.length, data.users.length);
+console.log(userExists("rashhasbeentome@gmail.com"));
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
 const middlewares = jsonServer.defaults();
 
@@ -28,12 +33,20 @@ server.use(jsonServer.bodyParser);
 
 // Simulate delay on all requests
 server.use(function (req, res, next) {
-  setTimeout(next, 4000);
+  setTimeout(next, 2000);
 });
 
 // Declaring custom routes below. Add custom routes before JSON Server router
 
 // Add createdAt to all POSTS
+//To verify the password later on:
+
+// if (bcrypt.compareSync("somePassword", hash)) {
+//   // Passwords match
+// } else {
+//   // Passwords don't match
+// }
+
 server.use((req, res, next) => {
   if (req.method === "POST") {
     req.body.createdAt = Date.now();
@@ -48,6 +61,17 @@ server.post("/courses/", function (req, res, next) {
     res.status(400).send(error);
   } else {
     req.body.slug = createSlug(req.body.title); // Generate a slug for new courses.
+    next();
+  }
+});
+
+server.post("/users/", function (req, res, next) {
+  const error = validateUser(req.body);
+  //userExists(req.body.email);
+  if (error) {
+    res.status(400).send(error);
+  } else {
+    req.body.password = bcrypt.hashSync(req.body.password, 10);
     next();
   }
 });
@@ -70,10 +94,23 @@ function createSlug(value) {
     .replace(/^-|-$/g, "")
     .toLowerCase();
 }
+function userExists(username) {
+  return data.users.some(function (el) {
+    return el.email === username;
+  });
+}
 
 function validateCourse(course) {
   if (!course.title) return "Title is required.";
   if (!course.authorId) return "Author is required.";
   if (!course.categoryId) return "Category is required.";
+  return "";
+}
+
+function validateUser(user) {
+  console.log(user.email);
+  if (userExists(user.email)) return "Email is already existsss";
+  if (!user.email) return "Email is required.";
+  if (!user.password) return "Password is required.";
   return "";
 }
