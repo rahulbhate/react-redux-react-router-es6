@@ -136,9 +136,7 @@ const newUser = {
   password: ""
 };
 
-const users = [
-  { id: 1, email: "rashhasbeentome@gmail.com", password: "rashrahul" }
-];
+const users = [];
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   newCourse,

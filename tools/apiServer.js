@@ -17,11 +17,7 @@ const server = jsonServer.create();
 const path = require("path");
 const router = jsonServer.router(path.join(__dirname, "db.json"));
 const bcrypt = require("bcrypt");
-const data = require("./mockData");
-console.log("*********", data.users);
-const uu = data.users.filter(u => u.email === "rashhsasbeentome@gmail.com");
-console.log(uu.length, data.users.length);
-console.log(userExists("rashhasbeentome@gmail.com"));
+const data = require("./db.json");
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
 const middlewares = jsonServer.defaults();
 
@@ -66,8 +62,11 @@ server.post("/courses/", function (req, res, next) {
 });
 
 server.post("/users/", function (req, res, next) {
+  // const email = req.body.email;
+  //console.log(email, req.body.email, data.users);
   const error = validateUser(req.body);
-  //userExists(req.body.email);
+  // const errors = data.users.some(el => el.email === email);
+  //console.log(errors);
   if (error) {
     res.status(400).send(error);
   } else {
@@ -94,11 +93,6 @@ function createSlug(value) {
     .replace(/^-|-$/g, "")
     .toLowerCase();
 }
-function userExists(username) {
-  return data.users.some(function (el) {
-    return el.email === username;
-  });
-}
 
 function validateCourse(course) {
   if (!course.title) return "Title is required.";
@@ -108,8 +102,8 @@ function validateCourse(course) {
 }
 
 function validateUser(user) {
-  console.log(user.email);
-  if (userExists(user.email)) return "Email is already existsss";
+  if (data.users.some(el => el.email === user.email))
+    return "Username already exists";
   if (!user.email) return "Email is required.";
   if (!user.password) return "Password is required.";
   return "";

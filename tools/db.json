@@ -1,1 +1,177 @@
-{"courses":[{"id":1,"title":"Securing React Apps with Auth0","slug":"react-auth0-authentication-security","picture":"https://placeimg.com/150/150/fruits","price":20,"authorId":2,"categoryId":1},{"id":2,"title":"React: The Big Picture","slug":"react-big-picture","picture":"https://placeimg.com/150/150/animals","price":25,"authorId":1,"categoryId":1},{"id":3,"title":"Creating Reusable React Components","slug":"react-creating-reusable-components","picture":"https://placeimg.com/150/150/nature","price":20,"authorId":1,"categoryId":1},{"id":4,"title":"Building a JavaScript Development Environment","slug":"javascript-development-environment","picture":"https://placeimg.com/150/150/people","price":20,"authorId":1,"categoryId":2},{"id":5,"title":"Building Applications with React and Redux","slug":"react-redux-react-router-es6","picture":"https://placeimg.com/150/150/arch","price":20,"authorId":1,"categoryId":2},{"id":6,"title":"Building Applications in React and Flux","slug":"react-flux-building-applications","picture":"https://placeimg.com/150/150/fruits","price":30,"authorId":1,"categoryId":1},{"id":7,"title":"Clean Code: Writing Code for Humans","slug":"writing-clean-code-humans","picture":"https://placeimg.com/150/150/arch","price":25,"authorId":1,"categoryId":2},{"id":8,"title":"Architecting Applications for the Real World","slug":"architecting-applications-dotnet","picture":"https://placeimg.com/150/150/people","price":35,"authorId":1,"categoryId":1},{"id":9,"title":"Becoming an Outlier: Reprogramming the Developer Mind","slug":"career-reboot-for-developer-mind","picture":"https://placeimg.com/150/150/nature","price":20,"authorId":1,"categoryId":1},{"id":10,"title":"Web Component Fundamentals","slug":"web-components-shadow-dom","picture":"https://placeimg.com/150/150/animals","price":25,"authorId":1,"categoryId":1}],"authors":[{"id":1,"name":"Cory House"},{"id":2,"name":"Scott Allen"},{"id":3,"name":"Dan Wahlin"}],"categories":[{"id":1,"name":"IT & Software"},{"id":2,"name":"Development"},{"id":3,"name":"Business"},{"id":4,"name":"Design"},{"id":5,"name":"Marketing"},{"id":6,"name":"Lifestyle"}],"users":[{"id":1,"email":"rashhasbeentome@gmail.com","password":"rashrahul"}]}
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Securing React Apps with Auth0",
+      "slug": "react-auth0-authentication-security",
+      "picture": "https://placeimg.com/150/150/fruits",
+      "price": 20,
+      "authorId": 2,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "title": "React: The Big Picture",
+      "slug": "react-big-picture",
+      "picture": "https://placeimg.com/150/150/animals",
+      "price": 25,
+      "authorId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "title": "Creating Reusable React Components",
+      "slug": "react-creating-reusable-components",
+      "picture": "https://placeimg.com/150/150/nature",
+      "price": 20,
+      "authorId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 5,
+      "title": "Building Applications with React and Redux",
+      "slug": "react-redux-react-router-es6",
+      "picture": "https://placeimg.com/150/150/arch",
+      "price": 20,
+      "authorId": 1,
+      "categoryId": 2
+    },
+    {
+      "id": 6,
+      "title": "Building Applications in React and Flux",
+      "slug": "react-flux-building-applications",
+      "picture": "https://placeimg.com/150/150/fruits",
+      "price": 30,
+      "authorId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 7,
+      "title": "Clean Code: Writing Code for Humans",
+      "slug": "writing-clean-code-humans",
+      "picture": "https://placeimg.com/150/150/arch",
+      "price": 25,
+      "authorId": 1,
+      "categoryId": 2
+    },
+    {
+      "id": 8,
+      "title": "Architecting Applications for the Real World",
+      "slug": "architecting-applications-dotnet",
+      "picture": "https://placeimg.com/150/150/people",
+      "price": 35,
+      "authorId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 9,
+      "title": "Becoming an Outlier: Reprogramming the Developer Mind",
+      "slug": "career-reboot-for-developer-mind",
+      "picture": "https://placeimg.com/150/150/nature",
+      "price": 20,
+      "authorId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 10,
+      "title": "Web Component Fundamentals",
+      "slug": "web-components-shadow-dom",
+      "picture": "https://placeimg.com/150/150/animals",
+      "price": 25,
+      "authorId": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 11,
+      "title": "Test 1",
+      "authorId": 2,
+      "categoryId": 6,
+      "createdAt": 1588209053035,
+      "slug": "test-1"
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Cory House"
+    },
+    {
+      "id": 2,
+      "name": "Scott Allen"
+    },
+    {
+      "id": 3,
+      "name": "Dan Wahlin"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "IT & Software"
+    },
+    {
+      "id": 2,
+      "name": "Development"
+    },
+    {
+      "id": 3,
+      "name": "Business"
+    },
+    {
+      "id": 4,
+      "name": "Design"
+    },
+    {
+      "id": 5,
+      "name": "Marketing"
+    },
+    {
+      "id": 6,
+      "name": "Lifestyle"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "bhate.rahul@gmail.com",
+      "password": "$2b$10$UdiFUriZTZZ23QyhxqZqiuFVglwqkCBwX.0hXXRME56NGgxrIe.VO",
+      "createdAt": 1588207878099
+    },
+    {
+      "id": 2,
+      "email": "tina@yahoo.com",
+      "password": "$2b$10$5glLxRmD/Utk5g8Y9GkS1e2TcJ8bJmoCCVCLzrM0LKgs4vSe0id6y",
+      "createdAt": 1588208083396
+    },
+    {
+      "id": 3,
+      "email": "rashasbeentome@gmail.com",
+      "password": "$2b$10$rwdwv1C38wzoW8GqQINFiu1wda66/pdYzd.YaUkqV7ix0KJU6zEe6",
+      "createdAt": 1588209825210
+    },
+    {
+      "id": 4,
+      "email": "bina@gmail.com",
+      "password": "$2b$10$uwqQMZoZgnUKbdEgJkvR0.WUdY2q531eCgKLnU4wqPGB9WWAnldNK",
+      "createdAt": 1588210498546
+    },
+    {
+      "id": 5,
+      "email": "rashh@gmail.com",
+      "password": "$2b$10$5PwtgPIb6aOjrqMXXW0A9uzXof/jmqu.39VNbBjEhcErC253pXXbO",
+      "createdAt": 1588211284493
+    },
+    {
+      "id": 6,
+      "email": "rahul123@gmail.com",
+      "password": "$2b$10$ytkiECW8jQZ4QxqBXAp83uuokQg7y4gLPGgvOBNjUuOUmCvWt/MiG",
+      "createdAt": 1588211393624
+    },
+    {
+      "id": 7,
+      "email": "rashrahul@gmail.com",
+      "password": "$2b$10$1eSsWh.gQ8xZsmn1E7czGeUW9dabF/Xn.RjT/7W5H1WlUr7oRM65u",
+      "createdAt": 1588211742845
+    }
+  ]
+}
