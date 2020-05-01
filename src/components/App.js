@@ -5,16 +5,15 @@ import { Route, Switch } from "react-router-dom";
 import HomePage from "./home/HomePage";
 import Header from "./common/Header";
 import Footer from "./common/Footer";
-import AboutPage from "./about/AboutPage";
 import ProductsPage from "./products/ProductsPage";
 import CartPage from "./products/CartPage";
-import UserLoginForm from "./users/UserLoginForm";
 import CoursesPage from "./courses/CoursesPage";
 import ManageCoursePage from "./courses/ManageCoursePage";
 import PageNotFound from "./PageNotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ManageUserPage from "./users/ManageUserPage";
+import ManageUserLoginPage from "./users/ManageUserLoginPage";
 
 function App() {
   return (
@@ -22,7 +21,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route path='/login' component={UserLoginForm} />
+        <Route path='/login' component={ManageUserLoginPage} />
         <Route path='/user' component={ManageUserPage} />
         <Route path='/products' component={ProductsPage} />
         <Route path='/cart' component={CartPage} />

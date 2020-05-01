@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { saveUser } from "../../redux/actions/userActions";
-import UserRegistrationForm from "./UserRegistrationForm";
+import { loginUser } from "../../redux/actions/userActions";
+import UserLoginForm from "./UserLoginForm";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 import { newUser } from "../../../tools/mockData";
-const ManageUserPage = ({ users, saveUser, history, ...props }) => {
+const ManageUserLoginPage = ({ users, loginUser, history, ...props }) => {
   const [user, setUser] = useState({ ...props.user });
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
@@ -38,9 +38,9 @@ const ManageUserPage = ({ users, saveUser, history, ...props }) => {
     //Client side Validations...
     if (!formIsValid()) return;
     setSaving(true);
-    saveUser(user)
+    loginUser(user)
       .then(() => {
-        toast.info("User Registered Successfully");
+        toast.info("User Loggedin Successfully");
         history.push("/courses");
       })
       .catch(error => {
@@ -50,7 +50,7 @@ const ManageUserPage = ({ users, saveUser, history, ...props }) => {
   }
   return (
     <main className='pa4 black-80'>
-      <UserRegistrationForm
+      <UserLoginForm
         user={user}
         errors={errors}
         onChange={handleChange}
@@ -66,9 +66,12 @@ const mapStateToProps = state => {
     user: newUser
   };
 };
-const mapDispatchToProps = { saveUser };
-ManageUserPage.propTypes = {
+const mapDispatchToProps = { loginUser };
+ManageUserLoginPage.propTypes = {
   history: PropTypes.object.isRequired,
-  saveUser: PropTypes.func.isRequired
+  loginUser: PropTypes.func.isRequired
 };
-export default connect(mapStateToProps, mapDispatchToProps)(ManageUserPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ManageUserLoginPage);

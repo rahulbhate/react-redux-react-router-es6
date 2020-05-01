@@ -18,6 +18,7 @@ const path = require("path");
 const router = jsonServer.router(path.join(__dirname, "db.json"));
 const bcrypt = require("bcrypt");
 const data = require("./db.json");
+const jwt = require("jsonwebtoken");
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
 const middlewares = jsonServer.defaults();
 
@@ -36,12 +37,6 @@ server.use(function (req, res, next) {
 
 // Add createdAt to all POSTS
 //To verify the password later on:
-
-// if (bcrypt.compareSync("somePassword", hash)) {
-//   // Passwords match
-// } else {
-//   // Passwords don't match
-// }
 
 server.use((req, res, next) => {
   if (req.method === "POST") {
@@ -62,17 +57,44 @@ server.post("/courses/", function (req, res, next) {
 });
 
 server.post("/users/", function (req, res, next) {
-  // const email = req.body.email;
-  //console.log(email, req.body.email, data.users);
   const error = validateUser(req.body);
-  // const errors = data.users.some(el => el.email === email);
-  //console.log(errors);
   if (error) {
     res.status(400).send(error);
   } else {
     req.body.password = bcrypt.hashSync(req.body.password, 10);
     next();
   }
+});
+
+server.post("/login/", function (req, res, next) {
+  // Validate email and password shouldn't be blank
+  //
+  const error = validateUserCredentials(req.body);
+  if (error) {
+    res.status(400).send(error);
+  } else {
+    if (data.users.some(el => el.email === req.body.email)) {
+      const ss = data.users.filter(d => d.email === req.body.email);
+      bcrypt.compare(req.body.password, ss[0].password, (err, result) => {
+        if (err) {
+          return res.status(304).json({ message: "forbidden" });
+        }
+        if (result) {
+          const token = jwt.sign(
+            {
+              ss
+            },
+            "secret",
+            { expiresIn: "1h" }
+          );
+          return res.status(200).json({
+            token: token
+          });
+        }
+      });
+    }
+  }
+  //next();
 });
 
 // Use default router
@@ -98,6 +120,12 @@ function validateCourse(course) {
   if (!course.title) return "Title is required.";
   if (!course.authorId) return "Author is required.";
   if (!course.categoryId) return "Category is required.";
+  return "";
+}
+
+function validateUserCredentials(user) {
+  if (!user.email) return "Email is required.";
+  if (!user.password) return "Password is required.";
   return "";
 }
 

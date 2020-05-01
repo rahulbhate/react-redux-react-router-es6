@@ -88,6 +88,22 @@
       "categoryId": 6,
       "createdAt": 1588209053035,
       "slug": "test-1"
+    },
+    {
+      "id": 12,
+      "title": "Test 1",
+      "authorId": 3,
+      "categoryId": 3,
+      "createdAt": 1588231843636,
+      "slug": "test-1"
+    },
+    {
+      "id": 13,
+      "title": "Securing React Apps with Auth",
+      "authorId": 2,
+      "categoryId": 3,
+      "createdAt": 1588234606200,
+      "slug": "securing-react-apps-with-auth"
     }
   ],
   "authors": [
@@ -134,8 +150,14 @@
     {
       "id": 1,
       "email": "bhate.rahul@gmail.com",
-      "password": "$2b$10$UdiFUriZTZZ23QyhxqZqiuFVglwqkCBwX.0hXXRME56NGgxrIe.VO",
-      "createdAt": 1588207878099
+      "password": "$2b$10$HdSSFWSO5hrpS3WZ2igQYuksMKzn4p8/tN.nuzIneoYBBpwC9j48W",
+      "createdAt": 1588298387843
+    },
+    {
+      "id": 2,
+      "email": "rashasbeentome@gmail.com",
+      "password": "$2b$10$0O7VKCOUeV2aF0FGnd3V.uBT2juJPuEEyjXQ8O0kWeIZIs2b6futu",
+      "createdAt": 1588330351954
     }
   ]
 }
