@@ -92,6 +92,8 @@ server.post("/login/", function (req, res, next) {
           return next(error);
         }
       });
+    } else {
+      return next(error);
     }
   }
 });
