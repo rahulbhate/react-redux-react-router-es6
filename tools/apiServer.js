@@ -75,11 +75,8 @@ server.post("/login/", function (req, res, next) {
   } else {
     if (data.users.some(el => el.email === req.body.email)) {
       const ss = data.users.filter(d => d.email === req.body.email);
-      bcrypt.compare(req.body.password, ss[0].password, (err, result) => {
-        if (err) {
-          return res.status(304).json({ message: "forbidden" });
-        }
-        if (result) {
+      bcrypt.compare(req.body.password, ss[0].password, (error, result) => {
+        if (result === true) {
           const token = jwt.sign(
             {
               ss
@@ -87,14 +84,16 @@ server.post("/login/", function (req, res, next) {
             "secret",
             { expiresIn: "1h" }
           );
+
           return res.status(200).json({
             token: token
           });
+        } else {
+          return next(error);
         }
       });
     }
   }
-  //next();
 });
 
 // Use default router
