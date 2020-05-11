@@ -6,7 +6,7 @@ import TextInput from "../common/TextInput";
 import { filterText, sortBy } from "../../redux/actions/filters";
 const arrays = ["title", "category", "authorname"];
 const CourseFilters = props => (
-  <div style={{ marginBottom: 15 }} className='measure center'>
+  <div className='measure center'>
     <TextInput
       htmlId='example-optional'
       label='Search By Course Title and Course Category'

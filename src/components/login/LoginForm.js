@@ -76,7 +76,11 @@ const LoginForm = ({ login, history, ...props }) => {
           error={errors.password}
         />
 
-        <button type='submit' disabled={isLoading} className='btn btn-primary'>
+        <button
+          type='submit'
+          disabled={isLoading}
+          className='f6 link dim br3 ph5 pv2 mb4 dib white bg-purple'
+        >
           {isLoading ? "Logging In..." : "Login"}
         </button>
       </form>

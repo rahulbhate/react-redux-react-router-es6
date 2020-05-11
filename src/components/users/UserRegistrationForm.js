@@ -10,7 +10,7 @@ const UserRegistrationForm = ({
 }) => {
   return (
     <>
-      <h4>User Registration</h4>
+      <h4>Signup Page</h4>
       <form onSubmit={onSave} className='measure center'>
         {errors.onSave && (
           <div className='alert alert-danger' role='alert'>
@@ -33,8 +33,12 @@ const UserRegistrationForm = ({
           error={errors.password}
         />
 
-        <button type='submit' disabled={saving} className='btn btn-primary'>
-          {saving ? "Logging In..." : "Register"}
+        <button
+          type='submit'
+          disabled={saving}
+          className='f6 link dim br3 ph5 pv2 mb4 dib white bg-purple'
+        >
+          {saving ? "Signing up..." : "Register"}
         </button>
       </form>
     </>

@@ -20,15 +20,17 @@ const CartPage = ({ cart, loadCart, deleteCartItem, deleteAllCartItems }) => {
     deleteAllCartItems();
   };
   return (
-    <>
-      <h2>Cart List</h2>
-      <button className='btn btn-outline-danger' onClick={handleDeleteAll}>
-        Remove All
-      </button>
-      {cart.map(c => (
-        <Cart key={c.id} {...c} onsave={handleSave} />
-      ))}
-    </>
+    <main>
+      <div dataName='component'>
+        <h2>Cart List</h2>
+        <button className='btn btn-outline-danger' onClick={handleDeleteAll}>
+          Remove All
+        </button>
+        {cart.map(c => (
+          <Cart key={c.id} {...c} onsave={handleSave} />
+        ))}
+      </div>
+    </main>
   );
 };
 const mapStateToProps = state => {

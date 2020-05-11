@@ -51,7 +51,7 @@ const ManageUserPage = ({ users, saveUser, history, ...props }) => {
       });
   }
   return (
-    <main className='pa4 black-80'>
+    <div className='mw6 center bg-white br3 pa3 pa5-ns mv5 ba b--black-8'>
       <UserRegistrationForm
         user={user}
         errors={errors}
@@ -59,7 +59,7 @@ const ManageUserPage = ({ users, saveUser, history, ...props }) => {
         onSave={handleSave}
         saving={saving}
       />
-    </main>
+    </div>
   );
 };
 

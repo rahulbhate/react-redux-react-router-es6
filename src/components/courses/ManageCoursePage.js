@@ -108,7 +108,7 @@ const ManageCoursePage = ({
     categories.length === 0 ? (
     <Spinner />
   ) : (
-    <main className='pa4 black-80'>
+    <div className='mw6 center bg-white br3 pa3 pa5-ns mv5 ba b--black-7'>
       <CourseForm
         course={course}
         authors={authors}
@@ -119,7 +119,7 @@ const ManageCoursePage = ({
         onSave={handleSave}
         saving={saving}
       />
-    </main>
+    </div>
   );
 };
 export function getCoursesBySlug(course, slug) {
