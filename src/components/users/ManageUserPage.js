@@ -14,19 +14,21 @@ const ManageUserPage = ({ users, saveUser, history, ...props }) => {
     console.log("Use Effect Hook Called");
   }, []);
   function handleChange(event) {
+    // const { name, value } = event.target;
     const { name, value } = event.target;
     setUser(prevUser => ({
       ...prevUser,
       [name]: value
     }));
+    // setUser({ [event.target.name]: event.target.value });
     console.log(user);
   }
   function formIsValid() {
     const { email, password } = user;
     const errors = {};
 
-    if (!email) errors.email = "Email is required.";
-    if (!password) errors.password = "Password is required";
+    if (!user.email) errors.email = "Email is required.";
+    if (!user.password) errors.password = "Password is required";
 
     setErrors(errors);
     // Form is valid if the errors object still has no properties
@@ -41,7 +43,7 @@ const ManageUserPage = ({ users, saveUser, history, ...props }) => {
     saveUser(user)
       .then(() => {
         toast.info("User Registered Successfully");
-        history.push("/courses");
+        history.push("/login");
       })
       .catch(error => {
         setSaving(false);

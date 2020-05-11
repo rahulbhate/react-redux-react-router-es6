@@ -1,8 +1,12 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./reducers";
 import logger from "redux-logger";
+import jwt from "jsonwebtoken";
+import setAuthorizationToken from "../../utils/setAuthorizationToken";
 import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
 import thunk from "redux-thunk";
+import { set } from "mongoose";
+import { setCurrentUser } from "./actions/loginActions";
 
 export default function configureStore() {
   // order for persisted State is very important otherwise it will generate
@@ -18,9 +22,19 @@ export default function configureStore() {
       applyMiddleware(thunk, logger, reduxImmutableStateInvariant())
     )
   );
+
   store.subscribe(() => {
-    saveToLocalStorage(store.getState());
+    saveToLocalStorage({
+      courses: store.getState().courses,
+      categories: store.getState().categories,
+      authors: store.getState().authors,
+      auth: store.getState().auth,
+      apiCallsInProgress: store.getState().apiCallsInProgress,
+      cart: store.getState().cart,
+      filters: store.getState().filters
+    });
   });
+
   return store;
 }
 

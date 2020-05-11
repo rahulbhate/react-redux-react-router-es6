@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import decode from "jwt-decode";
+import { setCurrentUser } from "../../redux/actions/loginActions";
 import { loadCourses, saveCourse } from "../../redux/actions/courseActions";
 import { loadAuthors } from "../../redux/actions/authorActions";
 import { loadCategories } from "../../redux/actions/categoriesAction";
@@ -12,9 +14,11 @@ const ManageCoursePage = ({
   courses,
   authors,
   categories,
+  auth,
   loadCourses,
   loadAuthors,
   loadCategories,
+  setCurrentUser,
   saveCourse,
   history,
   ...props
@@ -22,6 +26,7 @@ const ManageCoursePage = ({
   const [course, setCourse] = useState({ ...props.course });
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
+
   useEffect(() => {
     console.log("Use Effect Hook Called");
     if (courses.length === 0) {
@@ -31,11 +36,13 @@ const ManageCoursePage = ({
     } else {
       setCourse({ ...props.course });
     }
+
     if (categories.length === 0) {
       loadCategories().catch(error => {
         alert("Loading categories failed" + error);
       });
     }
+
     if (authors.length === 0) {
       loadAuthors().catch(error => {
         alert("Loading authors failed" + error);
@@ -53,6 +60,19 @@ const ManageCoursePage = ({
     }));
     console.log(course);
   }
+  const isTokenExpired = token => {
+    try {
+      const decoded = decode(token);
+      if (decoded.exp < Date.now() / 1000) {
+        // Checking if token is expired.
+        console.log("isToken Expired function called");
+        return true;
+      } else return false;
+    } catch (err) {
+      console.log("expired check failed! Line 42: AuthService.js");
+      return false;
+    }
+  };
   function formIsValid() {
     const { title, authorId, categoryId } = course;
     const errors = {};
@@ -60,7 +80,9 @@ const ManageCoursePage = ({
     if (!title) errors.title = "Title is required.";
     if (!authorId) errors.author = "Author is required";
     if (!categoryId) errors.category = "Category is required";
-
+    // if (isTokenExpired(auth.token)) {
+    //   history.push("/login");
+    // }
     setErrors(errors);
     // Form is valid if the errors object still has no properties
     return Object.keys(errors).length === 0;
@@ -69,6 +91,7 @@ const ManageCoursePage = ({
   function handleSave() {
     event.preventDefault();
     if (!formIsValid()) return;
+    console.log(auth);
     setSaving(true);
     saveCourse(course)
       .then(() => {
@@ -89,6 +112,7 @@ const ManageCoursePage = ({
       <CourseForm
         course={course}
         authors={authors}
+        auth={auth}
         categories={categories}
         errors={errors}
         onChange={handleChange}
@@ -111,14 +135,16 @@ const mapStateToProps = (state, ownProps) => {
     course,
     courses: state.courses,
     categories: state.categories,
-    authors: state.authors
+    authors: state.authors,
+    auth: state.auth
   };
 };
 const mapDispatchToProps = {
   loadCourses,
   loadCategories,
   loadAuthors,
-  saveCourse
+  saveCourse,
+  setCurrentUser
 };
 ManageCoursePage.propTypes = {
   authors: PropTypes.array.isRequired,

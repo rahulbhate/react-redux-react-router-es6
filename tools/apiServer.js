@@ -19,6 +19,8 @@ const router = jsonServer.router(path.join(__dirname, "db.json"));
 const bcrypt = require("bcrypt");
 const data = require("./db.json");
 const jwt = require("jsonwebtoken");
+const config = require("../config/config");
+
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
 const middlewares = jsonServer.defaults();
 
@@ -45,7 +47,7 @@ server.use((req, res, next) => {
   // Continue to JSON Server router
   next();
 });
-
+// CREATE COURSES ROUTE...
 server.post("/courses/", function (req, res, next) {
   const error = validateCourse(req.body);
   if (error) {
@@ -56,6 +58,7 @@ server.post("/courses/", function (req, res, next) {
   }
 });
 
+// REGISTER USER ROUTE....
 server.post("/users/", function (req, res, next) {
   const error = validateUser(req.body);
   if (error) {
@@ -66,34 +69,33 @@ server.post("/users/", function (req, res, next) {
   }
 });
 
-server.post("/login/", function (req, res, next) {
-  // Validate email and password shouldn't be blank
-  //
-  const error = validateUserCredentials(req.body);
+// LOGIN USER ROUTE ...
+server.post("/api/auth", function (req, res, next) {
+  console.log(req);
+  const error = validateUserCredentials(req.body.user);
   if (error) {
     res.status(400).send(error);
   } else {
-    if (data.users.some(el => el.email === req.body.email)) {
-      const ss = data.users.filter(d => d.email === req.body.email);
-      bcrypt.compare(req.body.password, ss[0].password, (error, result) => {
-        if (result === true) {
-          const token = jwt.sign(
-            {
-              ss
-            },
-            "secret",
-            { expiresIn: "1h" }
-          );
+    if (data.users.some(el => el.email === req.body.user.email)) {
+      const user = data.users.filter(d => d.email === req.body.user.email);
+      console.log(user);
+      bcrypt.compare(
+        req.body.user.password,
+        user[0].password,
+        (error, result) => {
+          if (result === true) {
+            const token = jwt.sign({ user }, config.jwtSecret, {
+              expiresIn: 1 * 1
+            });
 
-          return res.status(200).json({
-            token: token
-          });
-        } else {
-          return next(error);
+            return res.status(200).json({ token });
+          } else {
+            return res.status(403).json(`Access Denied`);
+          }
         }
-      });
+      );
     } else {
-      return next(error);
+      return res.status(403).json(`Access Denied`);
     }
   }
 });
@@ -125,7 +127,7 @@ function validateCourse(course) {
 }
 
 function validateUserCredentials(user) {
-  if (!user.email) return "Email is required.";
+  if (!user.email) return "Email is requireddd.";
   if (!user.password) return "Password is required.";
   return "";
 }

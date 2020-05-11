@@ -8,6 +8,7 @@ export function getUsers(user) {
 }
 
 export function saveUser(user) {
+  console.log(user);
   return fetch(baseUrl, {
     method: "POST",
     headers: { "content-type": "application/json" },

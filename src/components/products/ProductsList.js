@@ -7,6 +7,7 @@ import Skeleton, {
 } from "react-loading-skeleton";
 import ReactPlaceholder from "react-placeholder";
 import CourseFilters from "../courses/CourseFilters";
+
 const ProductsList = ({ courses, onSave }) => {
   return (
     <>

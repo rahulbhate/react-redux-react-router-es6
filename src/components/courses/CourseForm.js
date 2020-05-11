@@ -52,13 +52,6 @@ const CourseForm = ({
         onChange={onChange}
         error={errors.category}
       />
-      {/* <TextInput
-        name='category'
-        label='Category'
-        value={course.category}
-        onChange={onChange}
-        error={errors.category}
-      /> */}
 
       <button type='submit' disabled={saving} className='btn btn-primary'>
         {saving ? "Saving..." : "Save"}

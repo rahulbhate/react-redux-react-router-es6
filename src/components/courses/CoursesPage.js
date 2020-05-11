@@ -7,6 +7,7 @@ import {
   searchCourse
 } from "../../redux/actions/courseActions";
 import getVisibleCourses from "../../selectors/courses";
+import selectedCoursesSelector from "../../selectors/selectedCourses";
 import { loadAuthors } from "../../redux/actions/authorActions";
 import { loadCategories } from "../../redux/actions/categoriesAction";
 import PropTypes from "prop-types";
@@ -90,6 +91,7 @@ const mapStateToProps = state => {
       state.categories,
       state.filters
     ),
+    //courses: selectedCoursesSelector(state),
     authors: state.authors,
     categories: state.categories,
     loading: state.apiCallsInProgress > 0

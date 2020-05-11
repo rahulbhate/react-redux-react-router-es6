@@ -2,14 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import CourseFilters from "./CourseFilters";
-
 const CourseList = ({ courses, onDeleteClick }) => {
   return (
     <>
       <div className='fl w-50 bg-near-white tc'>
         <CourseFilters />
       </div>
-      <table className='table'>
+      <table className='table table-bordered table-light table-striped'>
         <thead>
           <tr>
             <th>Title</th>
