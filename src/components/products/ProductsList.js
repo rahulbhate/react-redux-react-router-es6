@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import CourseFilters from "../courses/CourseFilters";
 const ProductsList = ({ courses, onSave }) => {
   return (

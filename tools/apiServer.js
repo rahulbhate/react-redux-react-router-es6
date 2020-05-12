@@ -100,6 +100,36 @@ server.post("/api/auth", function (req, res, next) {
   }
 });
 
+server.post("/contact", function (req, res, next) {
+  console.log("POST called");
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "bhate.rahul@gmail.com",
+      pass: "rBhate2007"
+    }
+  });
+
+  let mailOptions = {
+    from: req.body.email,
+    to: req.body.email,
+    subject: req.body.subject,
+    text: req.body.message
+  };
+
+  transporter.sendMail(mailOptions, function (error, data) {
+    if (error) {
+      console.log("Error in sending Email");
+    } else {
+      console.log("Email Sent");
+    }
+  });
+
+  res.json({
+    message: "Email Sent"
+  });
+});
+
 // Use default router
 server.use(router);
 

@@ -35,7 +35,7 @@ const Header = ({ logout, auth, cart, props }) => {
         className='f6 fw4 hover-black no-underline black-70 dn dib-ns pv2 ph3'
         activeStyle={activeStyle}
       >
-        Register
+        Signup
       </NavLink>
       {" | "}
       <NavLink

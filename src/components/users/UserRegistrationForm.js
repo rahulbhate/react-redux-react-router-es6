@@ -38,7 +38,7 @@ const UserRegistrationForm = ({
           disabled={saving}
           className='f6 link dim br3 ph5 pv2 mb4 dib white bg-purple'
         >
-          {saving ? "Signing up..." : "Register"}
+          {saving ? "Signing up..." : "Signup"}
         </button>
       </form>
     </>

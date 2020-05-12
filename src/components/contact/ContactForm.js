@@ -11,11 +11,11 @@ const ContactForm = ({ history, ...props }) => {
     fullName: "",
     subject: "",
     email: "",
-    message: "",
-    errors: {}
+    message: ""
   });
-  const [isLoading, setLoading] = useState(false);
-  const [error, setError] = useState({});
+  const [errors, setErrors] = useState({});
+  const [saving, setSaving] = useState(false);
+
   function handleChange(event) {
     const { name, value } = event.target;
     setState({
@@ -26,27 +26,31 @@ const ContactForm = ({ history, ...props }) => {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    if (!isValid()) return;
-    // setState({ errors: {} });
-    // setLoading(true);
+    //Client side Validations...
+    if (!formIsValid()) return;
+    setState({ errors: {} });
+    setSaving(true);
   }
-  function isValid() {
-    const { errors, isValid } = validateInput(state.email, state.password);
-    if (!isValid) {
-      setState({ errors });
-    }
-    return isValid;
-  }
+  function formIsValid() {
+    const { fullName, subject, email, message } = state;
+    const errors = {};
 
-  const { errors } = state;
+    if (!fullName) errors.fullName = "Full Name is required.";
+    if (!subject) errors.subject = "Subject is required";
+    if (!email) errors.email = "Email is required.";
+    if (!message) errors.message = "Message is required";
+    setErrors(errors);
+    // Form is valid if the errors object still has no properties
+    return Object.keys(errors).length === 0;
+  }
 
   return (
     <>
       <h4>Contact Us Page</h4>
       <form onSubmit={handleSubmit} className='measure center'>
-        {error.handleSubmit && (
+        {errors.handleSubmit && (
           <div className='alert alert-danger' role='alert'>
-            {error.handleSubmit}
+            {errors.handleSubmit}
           </div>
         )}
         <TextInput
@@ -83,10 +87,10 @@ const ContactForm = ({ history, ...props }) => {
 
         <button
           type='submit'
-          disabled={isLoading}
+          disabled={saving}
           className='f6 link dim br3 ph5 pv2 mb4 dib white bg-purple'
         >
-          {isLoading ? "Loading..." : "Contact"}
+          {saving ? "Loading..." : "Submit"}
         </button>
       </form>
     </>
