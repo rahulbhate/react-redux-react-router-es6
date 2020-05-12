@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ManageUserPage from "./users/ManageUserPage";
 import LoginPage from "./login/LoginPage";
+import ContactPage from "./contact/ContactPage";
 import requireAuth from "../../utils/requireAuth";
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route exact path='/about' component={requireAuth(AboutPage)} />
-        <Route exact path='/login' component={LoginPage} />
+        <Route path='/about' component={requireAuth(AboutPage)} />
+        <Route path='/login' component={LoginPage} />
+        <Route exact path='/contact' component={ContactPage} />
         <Route path='/user' component={ManageUserPage} />
         <Route path='/products' component={requireAuth(ProductsPage)} />
         <Route path='/cart' component={requireAuth(CartPage)} />
