@@ -1,15 +1,6 @@
 {
   "courses": [
     {
-      "id": 1,
-      "title": "Securing React Apps with Auth0",
-      "slug": "react-auth0-authentication-security",
-      "picture": "https://placeimg.com/150/150/fruits",
-      "price": 20,
-      "authorId": 2,
-      "categoryId": 1
-    },
-    {
       "id": 2,
       "title": "React: The Big Picture",
       "slug": "react-big-picture",
@@ -82,22 +73,6 @@
       "categoryId": 1
     },
     {
-      "id": 11,
-      "title": "Test 1",
-      "authorId": 2,
-      "categoryId": 6,
-      "createdAt": 1588209053035,
-      "slug": "test-1"
-    },
-    {
-      "id": 12,
-      "title": "Test 1",
-      "authorId": 3,
-      "categoryId": 3,
-      "createdAt": 1588231843636,
-      "slug": "test-1"
-    },
-    {
       "id": 13,
       "title": "Securing React Apps with Auth",
       "authorId": 2,
@@ -106,35 +81,11 @@
       "slug": "securing-react-apps-with-auth"
     },
     {
-      "id": 14,
-      "title": "Test 1",
-      "authorId": 2,
-      "categoryId": 4,
-      "createdAt": 1589115250019,
-      "slug": "test-1"
-    },
-    {
-      "id": 15,
-      "title": "Test 1",
-      "authorId": 3,
-      "categoryId": 5,
-      "createdAt": 1589115334224,
-      "slug": "test-1"
-    },
-    {
       "id": 16,
       "title": "Test 1",
       "authorId": 1,
       "categoryId": 2,
       "createdAt": 1589205439588,
-      "slug": "test-1"
-    },
-    {
-      "id": 17,
-      "title": "Test 1",
-      "authorId": 2,
-      "categoryId": 3,
-      "createdAt": 1589205510977,
       "slug": "test-1"
     },
     {
@@ -146,14 +97,6 @@
       "slug": "test-1"
     },
     {
-      "id": 19,
-      "title": "Securing React Apps with Auth",
-      "authorId": 3,
-      "categoryId": 5,
-      "createdAt": 1589205630223,
-      "slug": "securing-react-apps-with-auth"
-    },
-    {
       "id": 20,
       "title": "Securing React Apps with Auth0",
       "authorId": 3,
@@ -162,35 +105,11 @@
       "slug": "securing-react-apps-with-auth0"
     },
     {
-      "id": 21,
-      "title": "Securing React Apps with Auth0",
-      "authorId": 3,
-      "categoryId": 4,
-      "createdAt": 1589205756834,
-      "slug": "securing-react-apps-with-auth0"
-    },
-    {
-      "id": 22,
-      "title": "Test 1",
-      "authorId": 3,
-      "categoryId": 2,
-      "createdAt": 1589205932116,
-      "slug": "test-1"
-    },
-    {
       "id": 23,
       "title": "Test 1",
       "authorId": 2,
       "categoryId": 3,
       "createdAt": 1589206022057,
-      "slug": "test-1"
-    },
-    {
-      "id": 24,
-      "title": "Test 1",
-      "authorId": 1,
-      "categoryId": 2,
-      "createdAt": 1589207225450,
       "slug": "test-1"
     },
     {

@@ -6,6 +6,7 @@ import { login } from "../../redux/actions/loginActions";
 import TextInput from "../common/TextInput";
 import { toast } from "react-toastify";
 
+import PasswordInput from "../common/password-input";
 const LoginForm = ({ login, history, ...props }) => {
   const [state, setState] = useState({
     email: "",
@@ -20,6 +21,7 @@ const LoginForm = ({ login, history, ...props }) => {
       ...state,
       [name]: value
     });
+    console.log(state);
   }
   function handleSubmit(event) {
     event.preventDefault();
@@ -36,10 +38,6 @@ const LoginForm = ({ login, history, ...props }) => {
         setLoading(false);
         setError({ handleSubmit: error.message });
       });
-    //   login(state).then(
-    //     res => history.push("/products")
-    //     //err => setState({ errors: err.data.errors, isLoading: false })
-    //   );
   }
   function isValid() {
     const { errors, isValid } = validateInput(state.email, state.password);
@@ -75,7 +73,13 @@ const LoginForm = ({ login, history, ...props }) => {
           onChange={handleChange}
           error={errors.password}
         />
-
+        {/* <PasswordInput
+          name='password1'
+          label='Password1'
+          value={state.password1}
+          placeholder='Type your password'
+          onChange={handleChange}
+        /> */}
         <button
           type='submit'
           disabled={isLoading}

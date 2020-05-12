@@ -1,13 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import Skeleton, {
-  SkeletonTheme,
-  skeletonContent
-} from "react-loading-skeleton";
-import ReactPlaceholder from "react-placeholder";
-import CourseFilters from "../courses/CourseFilters";
 
+import CourseFilters from "../courses/CourseFilters";
 const ProductsList = ({ courses, onSave }) => {
   return (
     <>

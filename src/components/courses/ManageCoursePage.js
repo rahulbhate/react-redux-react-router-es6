@@ -92,16 +92,20 @@ const ManageCoursePage = ({
     event.preventDefault();
     if (!formIsValid()) return;
     console.log(auth);
-    setSaving(true);
-    saveCourse(course)
-      .then(() => {
-        toast.info("Course Saved Successfully");
-        history.push("/courses");
-      })
-      .catch(error => {
-        setSaving(false);
-        setErrors({ onSave: error.message });
-      });
+    if (!isTokenExpired(auth.token)) {
+      setSaving(true);
+      saveCourse(course)
+        .then(() => {
+          toast.info("Course Saved Successfully");
+          history.push("/courses");
+        })
+        .catch(error => {
+          setSaving(false);
+          setErrors({ onSave: error.message });
+        });
+    } else {
+      history.push("/login");
+    }
   }
   return authors.length === 0 ||
     courses.length === 0 ||

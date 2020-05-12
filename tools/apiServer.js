@@ -85,7 +85,7 @@ server.post("/api/auth", function (req, res, next) {
         (error, result) => {
           if (result === true) {
             const token = jwt.sign({ user }, config.jwtSecret, {
-              expiresIn: 1 * 1
+              expiresIn: 60 * 60
             });
 
             return res.status(200).json({ token });
