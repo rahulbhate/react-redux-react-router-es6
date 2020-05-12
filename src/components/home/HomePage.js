@@ -7,7 +7,7 @@ const HomePage = () => {
   const [isOpen, isSetOpen] = useState(false);
   return (
     <div>
-      <h4>Coming Soon...</h4>
+      <h4>Contents Coming Soon...</h4>
       {/* <button
         className='f6 link dim br1 ph3 pv2 mb2 dib white bg-light-purple'
         onClick={e => {

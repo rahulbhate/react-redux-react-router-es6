@@ -13,6 +13,15 @@ const Header = ({ logout, auth, cart, props }) => {
   const userLinks = (
     <>
       <NavLink
+        to='/'
+        exact
+        className='f6 fw4 hover-purple no-underline black-70 dn dib-ns pv2 ph3'
+        activeStyle={activeStyle}
+      >
+        Home
+      </NavLink>
+      {" | "}
+      <NavLink
         to='/login'
         exact
         className='f6 fw4 hover-purple no-underline black-70 dn dib-ns pv2 ph3'
