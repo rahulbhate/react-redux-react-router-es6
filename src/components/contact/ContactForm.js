@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import validateInput from "../../../validations/login";
+import { contact } from "../../redux/actions/contactActions";
 import TextInput from "../common/TextInput";
 import TextArea from "../common/TextArea";
 import { toast } from "react-toastify";
 
-const ContactForm = ({ history, ...props }) => {
+const ContactForm = ({ history, contact, ...props }) => {
   const [state, setState] = useState({
     fullName: "",
     subject: "",
@@ -30,11 +30,22 @@ const ContactForm = ({ history, ...props }) => {
     if (!formIsValid()) return;
     setState({ errors: {} });
     setSaving(true);
+    contact(state)
+      .then(res => {
+        toast.info(
+          "Contact Form Has been Submitted Successfully, We Will Contact you in next 24 Hours"
+        );
+        history.push("/contact");
+        setSaving(false);
+      })
+      .catch(error => {
+        setSaving(false);
+        setErrors({ handleSubmit: error.message });
+      });
   }
   function formIsValid() {
     const { fullName, subject, email, message } = state;
     const errors = {};
-
     if (!fullName) errors.fullName = "Full Name is required.";
     if (!subject) errors.subject = "Subject is required";
     if (!email) errors.email = "Email is required.";
@@ -98,10 +109,11 @@ const ContactForm = ({ history, ...props }) => {
 };
 
 ContactForm.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  contact: PropTypes.func.isRequired
 };
 const mapStateToProps = state => {
   return {};
 };
-const mapDispatchToProps = {};
+const mapDispatchToProps = { contact };
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

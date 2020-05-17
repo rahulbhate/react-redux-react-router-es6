@@ -19,6 +19,9 @@ const router = jsonServer.router(path.join(__dirname, "db.json"));
 const bcrypt = require("bcrypt");
 const data = require("./db.json");
 const jwt = require("jsonwebtoken");
+const stripe = require("stripe")("sk_test_E4e0J5dFPh53uXECMVYASnSF007jxl702a");
+const { v4: uuidv4 } = require("uuid");
+var nodemailer = require("nodemailer");
 const config = require("../config/config");
 
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
@@ -101,20 +104,19 @@ server.post("/api/auth", function (req, res, next) {
 });
 
 server.post("/contact", function (req, res, next) {
-  console.log("POST called");
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "bhate.rahul@gmail.com",
-      pass: "rBhate2007"
+      user: req.body.data.email,
+      pass: config.pass
     }
   });
 
   let mailOptions = {
-    from: req.body.email,
-    to: req.body.email,
-    subject: req.body.subject,
-    text: req.body.message
+    from: req.body.data.email,
+    to: req.body.data.email,
+    subject: req.body.data.subject,
+    text: req.body.data.message
   };
 
   transporter.sendMail(mailOptions, function (error, data) {
@@ -128,6 +130,54 @@ server.post("/contact", function (req, res, next) {
   res.json({
     message: "Email Sent"
   });
+});
+
+server.post("/checkout", async (req, res) => {
+  console.log("Request:", req.body);
+
+  let error;
+  let status;
+  try {
+    const { product, email, id, card, cart } = req.body.data;
+    console.log(email, id, product, cart);
+    const customer = await stripe.customers.create({
+      email: email,
+      source: id
+    });
+
+    const idempotencyKey = uuidv4();
+    const total = cart.reduce((a, c) => a + c.price * c.units, 0);
+    console.log("TOTAL is : ", total);
+    const charge = await stripe.charges.create(
+      {
+        amount: total * 100,
+        currency: "AUD",
+        customer: customer.id,
+        receipt_email: email,
+        description: `Purchased the TV`,
+        shipping: {
+          name: card.name,
+          address: {
+            line1: card.address_line1,
+            line2: card.address_line2,
+            city: card.address_city,
+            country: card.address_country,
+            postal_code: card.address_zip
+          }
+        }
+      },
+      {
+        idempotencyKey
+      }
+    );
+    console.log("Charge:", { charge });
+    status = "success";
+  } catch (error) {
+    console.error("Error:", error);
+    status = "failure";
+  }
+
+  res.json({ error, status });
 });
 
 // Use default router
@@ -157,7 +207,7 @@ function validateCourse(course) {
 }
 
 function validateUserCredentials(user) {
-  if (!user.email) return "Email is requireddd.";
+  if (!user.email) return "Email is required.";
   if (!user.password) return "Password is required.";
   return "";
 }

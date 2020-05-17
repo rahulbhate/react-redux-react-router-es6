@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
-import { func } from "prop-types";
-
+import * as checkoutApi from "../../api/checkoutApi";
+import { beginApiCall, apiCallError } from "./apiStatusActions";
 export function addToCart(course) {
   return {
     type: types.ADD_TO_CART_SUCCESS,
@@ -19,4 +19,18 @@ export function deleteCartItem(course) {
 
 export function deleteAllCartItems() {
   return { type: types.DELETE_ALL_ITEMS_CART_SUCCESS };
+}
+
+export function checkout(data) {
+  console.log("Checkout Called");
+  return function (dispatch, getState) {
+    dispatch(beginApiCall());
+    return checkoutApi
+      .checkout(data)
+      .then(res => {})
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
 }

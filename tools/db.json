@@ -1,15 +1,6 @@
 {
   "courses": [
     {
-      "id": 2,
-      "title": "React: The Big Picture",
-      "slug": "react-big-picture",
-      "picture": "https://placeimg.com/150/150/animals",
-      "price": 25,
-      "authorId": 1,
-      "categoryId": 1
-    },
-    {
       "id": 3,
       "title": "Creating Reusable React Components",
       "slug": "react-creating-reusable-components",
@@ -71,94 +62,6 @@
       "price": 25,
       "authorId": 1,
       "categoryId": 1
-    },
-    {
-      "id": 13,
-      "title": "Securing React Apps with Auth",
-      "authorId": 2,
-      "categoryId": 3,
-      "createdAt": 1588234606200,
-      "slug": "securing-react-apps-with-auth"
-    },
-    {
-      "id": 16,
-      "title": "Test 1",
-      "authorId": 1,
-      "categoryId": 2,
-      "createdAt": 1589205439588,
-      "slug": "test-1"
-    },
-    {
-      "id": 18,
-      "title": "Test 1",
-      "authorId": 2,
-      "categoryId": 4,
-      "createdAt": 1589205602823,
-      "slug": "test-1"
-    },
-    {
-      "id": 20,
-      "title": "Securing React Apps with Auth0",
-      "authorId": 3,
-      "categoryId": 6,
-      "createdAt": 1589205668568,
-      "slug": "securing-react-apps-with-auth0"
-    },
-    {
-      "id": 23,
-      "title": "Test 1",
-      "authorId": 2,
-      "categoryId": 3,
-      "createdAt": 1589206022057,
-      "slug": "test-1"
-    },
-    {
-      "id": 25,
-      "title": "Test 1",
-      "authorId": 2,
-      "categoryId": 2,
-      "createdAt": 1589207283543,
-      "slug": "test-1"
-    },
-    {
-      "id": 26,
-      "title": "Test 1",
-      "authorId": 1,
-      "categoryId": 2,
-      "createdAt": 1589207315894,
-      "slug": "test-1"
-    },
-    {
-      "id": 27,
-      "title": "Test 1",
-      "authorId": 2,
-      "categoryId": 2,
-      "createdAt": 1589207332762,
-      "slug": "test-1"
-    },
-    {
-      "id": 28,
-      "title": "Test 1",
-      "authorId": 1,
-      "categoryId": 2,
-      "createdAt": 1589207494207,
-      "slug": "test-1"
-    },
-    {
-      "id": 29,
-      "title": "Test 1",
-      "authorId": 2,
-      "categoryId": 2,
-      "createdAt": 1589207969914,
-      "slug": "test-1"
-    },
-    {
-      "id": 30,
-      "title": "Test 1",
-      "authorId": 1,
-      "categoryId": 2,
-      "createdAt": 1589208097062,
-      "slug": "test-1"
     }
   ],
   "authors": [

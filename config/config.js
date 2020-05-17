@@ -1,3 +1,5 @@
 module.exports = {
-  jwtSecret: "somekeyforjsonwebtoken"
+  jwtSecret: "somekeyforjsonwebtoken",
+  user: "bhate.rahul@gmail.com",
+  pass: ""
 };

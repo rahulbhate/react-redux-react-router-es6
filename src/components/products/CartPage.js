@@ -1,24 +1,42 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import StripeCheckout from "react-stripe-checkout";
 import { connect } from "react-redux";
 import {
   loadCart,
   deleteCartItem,
-  deleteAllCartItems
+  deleteAllCartItems,
+  checkout
 } from "../../redux/actions/cartActions";
 
-const CartPage = ({ cart, loadCart, deleteCartItem, deleteAllCartItems }) => {
+const CartPage = ({
+  cart,
+  loadCart,
+  deleteCartItem,
+  deleteAllCartItems,
+  checkout
+}) => {
   useEffect(() => {
     if (cart.length === 0) {
       loadCart();
     }
   }, []);
+  const [product] = useState({
+    name: "Tesla Roadster",
+    price: 64998.67,
+    description: "Cool car"
+  });
   const handleSave = id => {
     deleteCartItem(id);
   };
   const handleDeleteAll = () => {
     deleteAllCartItems();
   };
+  function handleToken(token) {
+    const newItem = { ...token, product: product, cart: cart };
+    checkout(newItem);
+    //console.log({ token, addresses });
+  }
   return (
     <main>
       <div dataName='component'>
@@ -26,9 +44,23 @@ const CartPage = ({ cart, loadCart, deleteCartItem, deleteAllCartItems }) => {
         <button className='btn btn-outline-danger' onClick={handleDeleteAll}>
           Remove All
         </button>
+
         {cart.map(c => (
           <Cart key={c.id} {...c} onsave={handleSave} />
         ))}
+
+        <div>Cart Total:{cart.reduce((a, c) => a + c.price * c.units, 0)} </div>
+        <StripeCheckout
+          stripeKey='pk_test_csT7zJCCCXmozAPwq3TP9iKF00I2uUJyhP'
+          token={handleToken}
+          billingAddress
+          shippingAddress
+          currency='AUD'
+          name='Buy Online Course'
+          amount={cart.reduce((a, c) => a + c.price * c.units, 0) * 100}
+        >
+          <button className='btn btn-info'>Checkout </button>
+        </StripeCheckout>
       </div>
     </main>
   );
@@ -41,7 +73,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   loadCart,
   deleteCartItem,
-  deleteAllCartItems
+  deleteAllCartItems,
+  checkout
 };
 CartPage.propTypes = {
   cart: PropTypes.array.isRequired
