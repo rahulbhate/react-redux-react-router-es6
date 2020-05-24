@@ -43,9 +43,5 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       }
     ]
-  },
-  node: {
-    net: "empty",
-    dns: "empty"
   }
 };
