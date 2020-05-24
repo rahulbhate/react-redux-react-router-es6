@@ -24,7 +24,13 @@ const UserRegistrationForm = ({
           onChange={onChange}
           error={errors.email}
         />
-
+        <TextInput
+          name='file'
+          type='file'
+          label='Upload Profile Picture'
+          onChange={onChange}
+          error={errors.file}
+        />
         <TextInput
           name='password'
           label='Password'

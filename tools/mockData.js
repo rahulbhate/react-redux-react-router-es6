@@ -133,6 +133,7 @@ const newCourse = {
 const newUser = {
   id: null,
   email: "",
+  profileImage: null,
   password: ""
 };
 

@@ -21,11 +21,7 @@ const CartPage = ({
       loadCart();
     }
   }, []);
-  const [product] = useState({
-    name: "Tesla Roadster",
-    price: 64998.67,
-    description: "Cool car"
-  });
+
   const handleSave = id => {
     deleteCartItem(id);
   };
@@ -33,7 +29,7 @@ const CartPage = ({
     deleteAllCartItems();
   };
   function handleToken(token) {
-    const newItem = { ...token, product: product, cart: cart };
+    const newItem = { ...token, cart: cart };
     checkout(newItem);
     //console.log({ token, addresses });
   }

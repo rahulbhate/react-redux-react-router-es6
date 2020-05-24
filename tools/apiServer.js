@@ -17,13 +17,36 @@ const server = jsonServer.create();
 const path = require("path");
 const router = jsonServer.router(path.join(__dirname, "db.json"));
 const bcrypt = require("bcrypt");
+const multer = require("multer");
 const data = require("./db.json");
 const jwt = require("jsonwebtoken");
 const stripe = require("stripe")("sk_test_E4e0J5dFPh53uXECMVYASnSF007jxl702a");
 const { v4: uuidv4 } = require("uuid");
 var nodemailer = require("nodemailer");
 const config = require("../config/config");
-
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "../uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/jpg") {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter // this saves your file into a directory called "uploads"
+});
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
 const middlewares = jsonServer.defaults();
 
@@ -62,7 +85,8 @@ server.post("/courses/", function (req, res, next) {
 });
 
 // REGISTER USER ROUTE....
-server.post("/users/", function (req, res, next) {
+server.post("/users/", upload.single("file"), function (req, res, next) {
+  console.log(req.file);
   const error = validateUser(req.body);
   if (error) {
     res.status(400).send(error);
@@ -138,8 +162,8 @@ server.post("/checkout", async (req, res) => {
   let error;
   let status;
   try {
-    const { product, email, id, card, cart } = req.body.data;
-    console.log(email, id, product, cart);
+    const { email, id, card, cart } = req.body.data;
+    console.log(email, id, cart);
     const customer = await stripe.customers.create({
       email: email,
       source: id
@@ -154,7 +178,7 @@ server.post("/checkout", async (req, res) => {
         currency: "AUD",
         customer: customer.id,
         receipt_email: email,
-        description: `Purchased the TV`,
+        description: `Purchased Online Course`,
         shipping: {
           name: card.name,
           address: {

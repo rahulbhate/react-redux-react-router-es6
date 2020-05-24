@@ -7,12 +7,12 @@ export function getUsers(user) {
   return fetch(baseUrl).then(handleResponse).catch(handleError);
 }
 
-export function saveUser(user) {
-  console.log(user);
+export function saveUser(user, formData) {
+  console.log(user, formData);
   return fetch(baseUrl, {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify(user)
+    body: JSON.stringify(user, formData)
   })
     .then(handleResponse)
     .catch(handleError);

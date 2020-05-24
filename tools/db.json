@@ -53,15 +53,6 @@
       "price": 20,
       "authorId": 1,
       "categoryId": 1
-    },
-    {
-      "id": 10,
-      "title": "Web Component Fundamentals",
-      "slug": "web-components-shadow-dom",
-      "picture": "https://placeimg.com/150/150/animals",
-      "price": 25,
-      "authorId": 1,
-      "categoryId": 1
     }
   ],
   "authors": [
@@ -146,6 +137,27 @@
       "email": "prashant@gmail.com",
       "password": "$2b$10$btj9XXObt1kptAiW8s0g/.0H0MIFUTKH8KNLFQlvEzQOE.BQuX.8i",
       "createdAt": 1589203981545
+    },
+    {
+      "id": 8,
+      "email": "veda@gmail.com",
+      "profileImage": "2587-BW.jpg",
+      "password": "$2b$10$rlkMVEZJw8MXRQ5GuA0BruUq/DxzP04Ehz.ipGV0tTUfSqAhN0wPa",
+      "createdAt": 1589722406317
+    },
+    {
+      "id": 9,
+      "email": "snehal@gmail.com",
+      "profileImage": "2587-BW.jpg",
+      "password": "$2b$10$hNjB5yvFOwQEODgEoCR1u.aXmd4cFBzn68NCyb6pmiXsxur.QQU4y",
+      "createdAt": 1589865652966
+    },
+    {
+      "id": 10,
+      "email": "nisha@gmail.com",
+      "profileImage": "2587-BW.jpg",
+      "password": "$2b$10$WgO2GrQyu8ZYAdlKKUeb8uOQgtozkO7Hy7pOdjCq7dLYJ.PHEYVKq",
+      "createdAt": 1590328413337
     }
   ]
 }
