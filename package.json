@@ -39,7 +39,7 @@
     "reselect": "^4.0.0",
     "stripe": "^8.52.0",
     "uuid": "^8.0.0",
-    "validator": "^13.0.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/core": "7.3.4",
